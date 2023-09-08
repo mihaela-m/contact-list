@@ -1,0 +1,82 @@
+[
+    {
+        "Name": "Zack Lewis",
+        "Email": "zack.lewis@example.com",
+        "Birthday": "12/4/1978",
+        "Address": "7575 Elgin St",
+        "Phone Number": "(239) 201-6413",
+        "Image": "https://randomuser.me/api/portraits/men/1.jpg"
+    },
+    {
+        "Name": "Francis White",
+        "Email": "francis.white@example.com",
+        "Birthday": "12/7/1973",
+        "Address": "6469 Cherry St",
+        "Phone Number": "(917) 335-8717",
+        "Image": "https://randomuser.me/api/portraits/men/2.jpg"
+    },
+    {
+        "Name": "Kirk Harris",
+        "Email": "kirk.harris@example.com",
+        "Birthday": "5/7/1992",
+        "Address": "3810 Adams St",
+        "Phone Number": "(580) 369-8126",
+        "Image": "https://randomuser.me/api/portraits/men/3.jpg"
+    },
+    {
+        "Name": "Vernon Duncan",
+        "Email": "vernon.duncan@example.com",
+        "Birthday": "10/2/1951",
+        "Address": "8788 Hunters Creek Dr",
+        "Phone Number": "(283) 497-4150",
+        "Image": "https://randomuser.me/api/portraits/men/4.jpg"
+    },
+    {
+        "Name": "Anita Miller",
+        "Email": "anita.miller@example.com",
+        "Birthday": "8/6/1998",
+        "Address": "9363 Plum St",
+        "Phone Number": "(559) 281-2534",
+        "Image": "https://randomuser.me/api/portraits/women/1.jpg"
+    },
+    {
+        "Name": "Debbie Sims",
+        "Email": "debbie.sims@example.com",
+        "Birthday": "1/4/1977",
+        "Address": "7854 Fincher Rd",
+        "Phone Number": "(343) 543-3907",
+        "Image": "https://randomuser.me/api/portraits/women/2.jpg"
+    },
+    {
+        "Name": "Harper Smith",
+        "Email": "harper.smith@example.com",
+        "Birthday": "1/6/1995",
+        "Address": "5686 Mcgowen St",
+        "Phone Number": "(786) 233-9360",
+        "Image": "https://randomuser.me/api/portraits/women/3.jpg",
+    },
+    {
+        "Name": "Claire George",
+        "Email": "claire.george@example.com",
+        "Birthday": "10/1/1968",
+        "Address": "2902 Lakeview St",
+        "Phone Number": "(793) 446-7742",
+        "Image": "https://randomuser.me/api/portraits/women/4.jpg",
+    },
+    {
+        "Name": "Anne Bennett",
+        "Email": "anne.bennett@example.com",
+        "Birthday": "1/3/1959",
+        "Address": "1682 Woodland St",
+        "Phone Number": "(576) 889-3083",
+        "Image": "https://randomuser.me/api/portraits/women/5.jpg",
+    },
+    {
+        "Name": "Brandon Flores",
+        "Email": "brandon.flores@example.com",
+        "Birthday": "2/6/1999",
+        "Address": "1713 Karen Dr",
+        "Phone Number": "(822) 233-8279",
+        "Image": "https://randomuser.me/api/portraits/women/5.jpg"
+    }
+]
