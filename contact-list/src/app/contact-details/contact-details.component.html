@@ -1,1 +1,28 @@
-<p>contact-details works!</p>
+<div *ngIf="contact" class="contact-details">
+    <div class="contact-header">
+        <div class="contact-image-container">
+            <img [src]="contact.Image" alt="{{ contact.Name }} Image" class="contact-image">
+        </div>
+        <div class="contact-name">{{ contact.Name }}</div>
+    </div>
+    <div class="contact-info">
+        <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i> Address: {{ contact.Address }}
+        </div>
+        <div class="contact-item">
+            <i class="far fa-envelope"></i> Email: {{ contact.Email }}
+        </div>
+        <div class="contact-item">
+            <i class="fas fa-phone"></i> Phone: {{ contact.PhoneNumber }}
+        </div>
+        <div class="contact-item">
+            <i class="fas fa-mobile-alt"></i> Cell: {{ contact.Cell }}
+        </div>
+        <div class="contact-item">
+            <i class="far fa-calendar-alt"></i> Registration Date: {{ contact.RegistrationDate }}
+        </div>
+        <div class="contact-item">
+            <i class="fas fa-birthday-cake"></i> Age: {{ contact.Age }}
+        </div>
+    </div>
+</div>

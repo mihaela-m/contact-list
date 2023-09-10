@@ -15,11 +15,31 @@ export class ContactDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     const contactId = this.route.snapshot.paramMap.get('id');
-
     if (contactId !== null) {
       this.contactService.getContactById(contactId).subscribe((contact) => {
-        this.contact = contact;
+        if (contact) {
+          this.contact = contact;
+          this.calculateAge(contact.Birthday);
+        } else {
+          console.error('Contact not found.');
+        }
       });
+    } else {
+      console.error('Invalid contact ID:', contactId);
+    }
+  }
+
+
+  calculateAge(birthday: string) {
+    const today = new Date();
+    const birthdate = new Date(birthday);
+    const age = today.getFullYear() - birthdate.getFullYear();
+
+    const monthDiff = today.getMonth() - birthdate.getMonth();
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthdate.getDate())) {
+      this.contact.Age = age - 1;
+    } else {
+      this.contact.Age = age;
     }
   }
 

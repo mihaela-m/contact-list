@@ -2,7 +2,7 @@
     <h2>Contact List</h2>
 
     <li *ngFor="let contact of contacts">
-        <div class="contact-item">
+        <div class="contact-item" (click)="showDetails(contact)">
             <img [src]="contact.Image" alt="{{ contact.Name }} Image">
             <div class="contact-details">
                 <h3>{{ contact.Name }}</h3>
@@ -10,7 +10,6 @@
                 <p>Birthday: {{ contact.Birthday }}</p>
                 <p>Phone Number: {{ contact.PhoneNumber }}</p>
             </div>
-            <button (click)="showDetails(contact)">View Details</button>
         </div>
 
 </div>
