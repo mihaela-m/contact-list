@@ -1,17 +1,16 @@
 <div class="contact-list">
     <h2>Contact List</h2>
-    <ul>
-        <li *ngFor="let contact of contacts">
-            <div class="contact-item">
-                <img [src]="contact.Image" alt="{{ contact.Name }} Image">
-                <div class="contact-details">
-                    <h3>{{ contact.Name }}</h3>
-                    <p>Email: {{ contact.Email }}</p>
-                    <p>Birthday: {{ contact.Birthday }}</p>
-                    <p>Phone Number: {{ contact.PhoneNumber }}</p>
-                    <button (click)="showDetails(contact)">View Details</button>
-                </div>
+
+    <li *ngFor="let contact of contacts">
+        <div class="contact-item">
+            <img [src]="contact.Image" alt="{{ contact.Name }} Image">
+            <div class="contact-details">
+                <h3>{{ contact.Name }}</h3>
+                <p>Email: {{ contact.Email }}</p>
+                <p>Birthday: {{ contact.Birthday }}</p>
+                <p>Phone Number: {{ contact.PhoneNumber }}</p>
             </div>
-        </li>
-    </ul>
+            <button (click)="showDetails(contact)">View Details</button>
+        </div>
+
 </div>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +22,12 @@ export class ContactService {
 
   getContacts(): Observable<any[]> {
     return this.contactSubject.asObservable();
+  }
+
+  getContactById(contactId: string): Observable<any> {
+    return this.contactSubject.pipe(
+      map((contacts) => contacts.find((contact) => contact.Id === contactId))
+    );
   }
 
   addContact(contact: any) {

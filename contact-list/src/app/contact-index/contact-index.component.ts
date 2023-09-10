@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactService } from '../shared/services/contact.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contact-index',
@@ -8,7 +9,7 @@ import { ContactService } from '../shared/services/contact.service';
 })
 export class ContactIndexComponent implements OnInit {
 
-  constructor(private contactService: ContactService) { }
+  constructor(private contactService: ContactService, private router: Router) { }
   contacts: any[] = [];
   ngOnInit(): void {
     this.contactService.getContacts().subscribe((contacts) => {
@@ -17,7 +18,10 @@ export class ContactIndexComponent implements OnInit {
   }
 
   showDetails(contact: any) {
-    console.log(contact);
+    if (contact.id !== undefined && contact.id !== null) {
+      this.router.navigate(['/contact', contact.id]);
+    } else {
+      console.error('Invalid contact ID:', contact.id);
+    }
   }
-
 }
