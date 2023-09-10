@@ -24,4 +24,8 @@ export class ContactIndexComponent implements OnInit {
       console.error('Invalid contact ID:', contact.id);
     }
   }
+
+  openContactForm() {
+    this.router.navigate(['/contact-form']);
+  }
 }
