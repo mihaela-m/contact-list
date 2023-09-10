@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ContactService } from '../shared/services/contact.service';
 
 @Component({
@@ -9,8 +9,12 @@ import { ContactService } from '../shared/services/contact.service';
 })
 export class ContactDetailsComponent implements OnInit {
   contact: any
+  isNewContact = false;
+  editMode = false;
+  deleteConfirmed = false;
 
   constructor(private route: ActivatedRoute,
+    private router: Router,
     private contactService: ContactService) { }
 
   ngOnInit(): void {
@@ -29,6 +33,20 @@ export class ContactDetailsComponent implements OnInit {
     }
   }
 
+  saveContact() {
+    if (this.contact && this.contact.id) {
+      this.contactService.editContact(this.contact.id - 1, this.contact);
+      this.toggleEditMode();
+    }
+  }
+
+  deleteContact() {
+    if (this.contact && this.contact.id) {
+      this.contactService.deleteContact(this.contact.id);
+      this.router.navigate(['/']);
+    }
+  }
+
 
   calculateAge(birthday: string) {
     const today = new Date();
@@ -41,6 +59,22 @@ export class ContactDetailsComponent implements OnInit {
     } else {
       this.contact.Age = age;
     }
+  }
+
+  toggleEditMode() {
+    this.editMode = !this.editMode;
+  }
+
+  onDeleteClick() {
+    this.deleteConfirmed = false;
+    console.log("delete was clicked")
+  }
+
+  onConfirmation(confirmed: boolean) {
+    if (confirmed) {
+      this.deleteContact();
+    }
+    this.deleteConfirmed = false;
   }
 
 

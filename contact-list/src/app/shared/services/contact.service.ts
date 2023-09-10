@@ -39,4 +39,12 @@ export class ContactService {
     this.contacts[index] = updatedContact;
     this.contactSubject.next(this.contacts);
   }
+
+  deleteContact(contactId: string) {
+    const index = this.contacts.findIndex((contact) => contact.id === contactId);
+    if (index !== -1) {
+      this.contacts.splice(index, 1);
+      this.contactSubject.next(this.contacts);
+    }
+  }
 }
