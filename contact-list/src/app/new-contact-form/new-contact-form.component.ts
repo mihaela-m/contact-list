@@ -14,8 +14,7 @@ export class NewContactFormComponent {
     Email: '',
     PhoneNumber: '',
     Cell: '',
-    RegistrationDate: '',
-    Age: ''
+    Birthday: '',
   };
   constructor(private router: Router, private contactService: ContactService) { }
 
@@ -24,10 +23,13 @@ export class NewContactFormComponent {
 
   saveContact() {
     if (this.contact) {
-
       this.contactService.addContact(this.contact);
       this.router.navigate(['/']);
     }
+  }
+
+  goBack(){
+    this.router.navigate(['/']);
   }
 
 }

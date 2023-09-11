@@ -1,45 +1,43 @@
-<div class="contact-details">
-    <h2>New Contact</h2>
-    <form (ngSubmit)="saveContact()" #contactForm="ngForm">
-        <div class="contact-header">
-            <!-- <div class="contact-image-container">
-                <img [src]="contact.Image" alt="{{ contact.Name }} Image" class="contact-image">
-            </div> -->
+<div *ngIf="contact" class="contact-details">
+    <div class="action-icons">
+        <button (click)="goBack()" class="back-button">
+            <i class="fas fa-arrow-left"></i>
+        </button>
+    </div>
+    <div class="contact-header">
+        <div class="contact-image-container">
+            <img src="assets/profile.png" alt="{{ contact.Name }} Image" class="contact-image">
+        </div>
+        <div class="contact-name">{{ contact.Name }}</div>
+    </div>
+    <div class="contact-info">
+        <div class="contact-item">
+            <i class="fa fa-user"></i> Name:
+            <input type="text" name="Name" [(ngModel)]="contact.Name" required>
+        </div>
+        <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i> Address:
+            <input type="text" name="Address" [(ngModel)]="contact.Address" required>
+        </div>
+        <div class="contact-item">
+            <i class="far fa-envelope"></i> Email:
+            <input type="text" name="Email" [(ngModel)]="contact.Email" required>
+        </div>
+        <div class="contact-item">
+            <i class="fas fa-phone"></i> Phone:
+            <input type="text" name="PhoneNumber" [(ngModel)]="contact.PhoneNumber" required>
+        </div>
+        <div class="contact-item">
+            <i class="fas fa-mobile-alt"></i> Cell:
+            <input type="text" name="Cell" [(ngModel)]="contact.Cell" required>
+        </div>
+        <div class="contact-item">
+            <i class="fas fa-birthday-cake"></i> Birthday:
+            <input type="date" name="Birthday" [(ngModel)]="contact.Birthday" required>
+        </div>
+    </div>
 
-        </div>
-        <div class="contact-info">
-            <div class="contact-item">
-                <input type="text" name="Name" [(ngModel)]="contact.Name" required placeholder="Name">
-            </div>
-            <div class="contact-item">
-                <i class="fas fa-map-marker-alt"></i>
-                <input type="text" name="Address" [(ngModel)]="contact.Address" required placeholder="Address">
-            </div>
-            <div class="contact-item">
-                <i class="far fa-envelope"></i>
-                <input type="email" name="Email" [(ngModel)]="contact.Email" required placeholder="Email">
-            </div>
-            <div class="contact-item">
-                <i class="fas fa-phone"></i>
-                <input type="tel" name="PhoneNumber" [(ngModel)]="contact.PhoneNumber" required
-                    pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Phone (xxx-xxx-xxxx)">
-            </div>
-            <div class="contact-item">
-                <i class="fas fa-mobile-alt"></i>
-                <input type="tel" name="Cell" [(ngModel)]="contact.Cell" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                    placeholder="Cell (xxx-xxx-xxxx)">
-            </div>
-            <div class="contact-item">
-                <i class="far fa-calendar-alt"></i>
-                <input type="date" name="RegistrationDate" [(ngModel)]="contact.RegistrationDate" required>
-            </div>
-            <div class="contact-item">
-                <i class="fas fa-birthday-cake"></i>
-                <input type="text" name="Age" [(ngModel)]="contact.Age" required placeholder="Age">
-            </div>
-        </div>
-        <div class="contact-actions">
-            <button type="submit">Save</button>
-        </div>
-    </form>
+    <div class="contact-actions-save">
+        <button (click)="saveContact()">Save</button>
+    </div>
 </div>

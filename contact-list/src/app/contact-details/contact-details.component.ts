@@ -61,6 +61,10 @@ export class ContactDetailsComponent implements OnInit {
       this.contact.Age = age;
     }
   }
+  
+  goBack(){
+    this.router.navigate(['/']);
+  }
 
   toggleEditMode() {
     this.editMode = !this.editMode;
@@ -68,7 +72,6 @@ export class ContactDetailsComponent implements OnInit {
 
   onDeleteClick() {
     this.showConfirmationModal = true;
-    console.log("delete was clicked")
   }
 
   onConfirmation(confirmed: boolean) {
