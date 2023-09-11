@@ -1,7 +1,12 @@
-<div class="modal">
-    <div class="modal-content">
-        <p>{{ message }}</p>
-        <button (click)="confirm()">Yes</button>
-        <button (click)="cancel()">No</button>
+<!-- confirmation-modal.component.html -->
+
+<div class="confirmation-modal-overlay">
+    <div class="confirmation-modal-container">
+      <p class="confirmation-modal-message">{{ message }}</p>
+      <div class="confirmation-modal-buttons">
+        <button class="confirmation-modal-button confirm" (click)="confirm()">Confirm</button>
+        <button class="confirmation-modal-button cancel" (click)="cancel()">Cancel</button>
+      </div>
     </div>
-</div>
+  </div>
+  

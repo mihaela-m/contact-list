@@ -49,5 +49,4 @@
         <button *ngIf="editMode" (click)="saveContact()">Save</button>
     </div>
 </div>
-<app-confirmation-modal *ngIf="deleteConfirmed" [message]="'Are you sure you want to delete this contact?'"
-    (confirmed)="onConfirmation($event)"></app-confirmation-modal>
+<app-confirmation-modal *ngIf="showConfirmationModal" [message]="'Are you sure you want to delete this contact?'" (confirmed)="onConfirmation($event)"></app-confirmation-modal>

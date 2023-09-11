@@ -12,6 +12,7 @@ export class ContactDetailsComponent implements OnInit {
   isNewContact = false;
   editMode = false;
   deleteConfirmed = false;
+  showConfirmationModal = false;
 
   constructor(private route: ActivatedRoute,
     private router: Router,
@@ -66,15 +67,15 @@ export class ContactDetailsComponent implements OnInit {
   }
 
   onDeleteClick() {
-    this.deleteConfirmed = false;
+    this.showConfirmationModal = true;
     console.log("delete was clicked")
   }
 
   onConfirmation(confirmed: boolean) {
+    this.showConfirmationModal = false;
     if (confirmed) {
       this.deleteContact();
     }
-    this.deleteConfirmed = false;
   }
 
 
