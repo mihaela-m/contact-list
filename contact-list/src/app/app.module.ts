@@ -11,6 +11,7 @@ import { ContactIndexComponent } from './contact-index/contact-index.component';
 import { ContactDetailsComponent } from './contact-details/contact-details.component';
 import { NewContactFormComponent } from './new-contact-form/new-contact-form.component';
 import { ConfirmationModalComponent } from './shared/confirmation-modal/confirmation-modal.component';
+import { MobileElementsComponent } from './mobile-elements/mobile-elements.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ConfirmationModalComponent } from './shared/confirmation-modal/confirma
     ContactIndexComponent,
     ContactDetailsComponent,
     NewContactFormComponent,
-    ConfirmationModalComponent
+    ConfirmationModalComponent,
+    MobileElementsComponent
   ],
   imports: [
     BrowserModule,

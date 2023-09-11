@@ -1,0 +1,20 @@
+.mobile-elements {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f7f7f7;
+    color: rgb(59, 59, 59);
+    padding: 8px;
+    font-size: 14px;
+}
+
+.carrier, .clock, .battery {
+    display: flex;
+    align-items: center;
+    margin-right: 8px;
+}
+
+.clock i, .battery i {
+    margin-right: 4px;
+}

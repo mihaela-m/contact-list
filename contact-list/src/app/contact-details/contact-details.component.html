@@ -1,7 +1,11 @@
 <div *ngIf="contact" class="contact-details">
-    <div class="contact-actions">
-        <button *ngIf="!isNewContact" (click)="toggleEditMode()">Edit</button>
-        <button *ngIf="!isNewContact" (click)="onDeleteClick()">Delete</button>
+    <div class="action-icons">
+        <button *ngIf="!isNewContact" (click)="toggleEditMode()" class="edit-button">
+            <i class="fas fa-edit"></i>
+        </button>
+        <button *ngIf="!isNewContact" (click)="onDeleteClick()" class="delete-button">
+            <i class="fas fa-trash"></i>
+        </button>
     </div>
     <div class="contact-header">
         <div class="contact-image-container">
@@ -12,41 +16,41 @@
     <div class="contact-info">
         <div class="contact-item">
             <i class="fas fa-map-marker-alt"></i> Address:
-            <span *ngIf="!editMode">{{ contact.Address }}</span>
-            <input *ngIf="editMode" type="text" name="Address" [(ngModel)]="contact.Address" required
+            <span  class="contact-detail"  *ngIf="!editMode">{{ contact.Address }}</span>
+            <input *ngIf="editMode && !isNewContact" type="text" name="Address" [(ngModel)]="contact.Address" required
                 placeholder="Address">
         </div>
         <div class="contact-item">
             <i class="far fa-envelope"></i> Email:
-            <span *ngIf="!editMode">{{ contact.Email }}</span>
-            <input *ngIf="editMode" type="text" name="Email" [(ngModel)]="contact.Email" required placeholder="Email">
+            <span  class="contact-detail"  *ngIf="!editMode">{{ contact.Email }}</span>
+            <input *ngIf="editMode && !isNewContact" type="text" name="Email" [(ngModel)]="contact.Email" required placeholder="Email">
         </div>
         <div class="contact-item">
             <i class="fas fa-phone"></i> Phone:
-            <span *ngIf="!editMode">{{ contact.PhoneNumber }}</span>
-            <input *ngIf="editMode" type="text" name="PhoneNumber" [(ngModel)]="contact.PhoneNumber" required
+            <span  class="contact-detail" *ngIf="!editMode">{{ contact.PhoneNumber }}</span>
+            <input *ngIf="editMode && !isNewContact" type="text" name="PhoneNumber" [(ngModel)]="contact.PhoneNumber" required
                 placeholder="Phone">
         </div>
         <div class="contact-item">
             <i class="fas fa-mobile-alt"></i> Cell:
-            <span *ngIf="!editMode">{{ contact.Cell }}</span>
-            <input *ngIf="editMode" type="text" name="Cell" [(ngModel)]="contact.Cell" required placeholder="Cell">
+            <span  class="contact-detail" *ngIf="!editMode">{{ contact.Cell }}</span>
+            <input *ngIf="editMode && !isNewContact" type="text" name="Cell" [(ngModel)]="contact.Cell" required placeholder="Cell">
         </div>
         <div class="contact-item">
             <i class="far fa-calendar-alt"></i> Date Added:
-            <span *ngIf="!editMode">{{ contact.RegistrationDate }}</span>
-            <input *ngIf="editMode" type="text" name="RegistrationDate" [(ngModel)]="contact.RegistrationDate" required
+            <span  class="contact-detail" *ngIf="!editMode">{{ contact.RegistrationDate }}</span>
+            <input *ngIf="editMode && !isNewContact" type="text" name="RegistrationDate" [(ngModel)]="contact.RegistrationDate" required
                 placeholder="RegistrationDate">
         </div>
         <div class="contact-item">
             <i class="fas fa-birthday-cake"></i> Age:
-            <span *ngIf="!editMode">{{ contact.Age }}</span>
-            <input *ngIf="editMode" type="text" name="Age" [(ngModel)]="contact.Age" required placeholder="Age">
+            <span  class="contact-detail" *ngIf="!editMode">{{ contact.Age }}</span>
+            <input *ngIf="editMode && !isNewContact" type="text" name="Age" [(ngModel)]="contact.Age" required placeholder="Age">
         </div>
     </div>
 
     <div class="contact-actions">
-        <button *ngIf="editMode" (click)="saveContact()">Save</button>
+        <button *ngIf="editMode && !isNewContact" (click)="saveContact()">Save</button>
     </div>
 </div>
 <app-confirmation-modal *ngIf="showConfirmationModal" [message]="'Are you sure you want to delete this contact?'" (confirmed)="onConfirmation($event)"></app-confirmation-modal>

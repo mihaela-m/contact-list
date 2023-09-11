@@ -25,6 +25,11 @@
     flex: 1;
 }
 
+.contact-list h2 {
+    font-size: 20px;
+    text-align: center;
+}
+
 .contact-details h3 {
     font-size: 18px;
     margin: 0;
@@ -35,13 +40,17 @@
     margin: 6px 0;
 }
 
-button {
+.add-contact-button {
+    margin-top: 20px;
     background-color: #007bff;
     color: white;
     border: none;
     padding: 8px 16px;
     border-radius: 4px;
     cursor: pointer;
+    position: absolute; 
+    top: 16px; 
+    right: 16px;
 }
 
 

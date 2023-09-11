@@ -1,6 +1,7 @@
 <div class="contact-list">
-    <h2>Contact List</h2>
-    <button (click)="openContactForm()">New Contact</button>
+    <h2>Contacts</h2>
+    <button (click)="openContactForm()" class="add-contact-button">
+        <i class="fas fa-plus"></i></button>
     <div *ngFor="let contact of contacts" class="contact-item" (click)="showDetails(contact)">
         <img [src]="contact.Image" alt="{{ contact.Name }} Image">
         <div class="contact-details">
