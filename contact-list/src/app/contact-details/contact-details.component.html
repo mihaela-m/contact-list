@@ -33,7 +33,7 @@
             <input *ngIf="editMode" type="text" name="Cell" [(ngModel)]="contact.Cell" required placeholder="Cell">
         </div>
         <div class="contact-item">
-            <i class="far fa-calendar-alt"></i> Registration Date:
+            <i class="far fa-calendar-alt"></i> Date Added:
             <span *ngIf="!editMode">{{ contact.RegistrationDate }}</span>
             <input *ngIf="editMode" type="text" name="RegistrationDate" [(ngModel)]="contact.RegistrationDate" required
                 placeholder="RegistrationDate">
