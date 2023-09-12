@@ -24,8 +24,8 @@ export class ContactDetailsComponent implements OnInit {
     this.contactForm = this.fb.group({
       Address: ['', Validators.required],
       Email: ['', [Validators.required, Validators.email]],
-      PhoneNumber: ['', Validators.pattern(/^\(\d{3}\) \d{3}-\d{4}$/)],
-      Cell: ['', Validators.pattern(/^\(\d{3}\) \d{3}-\d{4}$/)],
+      PhoneNumber: ['', Validators.pattern(/^(?:\(\d{3}\)\s*|\d{3}[-.]?)?\d{3}[-.]?\d{4}$/)],//North american phone formats
+      Cell: ['', Validators.pattern(/^(?:\(\d{3}\)\s*|\d{3}[-.]?)?\d{3}[-.]?\d{4}$/)],
       RegistrationDate: ['', Validators.required],
       Age: ['', Validators.required],
     });

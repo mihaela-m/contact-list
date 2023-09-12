@@ -24,8 +24,8 @@ export class NewContactFormComponent implements OnInit {
       Name: ['', Validators.required],
       Address: ['', Validators.required],
       Email: ['', [Validators.required, Validators.email]],
-      PhoneNumber: ['', Validators.pattern(/^\(\d{3}\) \d{3}-\d{4}$/)],
-      Cell: ['', Validators.pattern(/^\(\d{3}\) \d{3}-\d{4}$/)],
+      PhoneNumber: ['', Validators.pattern(/^(?:\(\d{3}\)\s*|\d{3}[-.]?)?\d{3}[-.]?\d{4}$/)],//north american phone formats
+      Cell: ['', Validators.pattern(/^(?:\(\d{3}\)\s*|\d{3}[-.]?)?\d{3}[-.]?\d{4}$/)],
       Birthday: ['', Validators.required]
     });
   }

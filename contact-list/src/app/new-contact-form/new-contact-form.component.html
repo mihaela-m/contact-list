@@ -34,7 +34,7 @@
                 <input type="text" name="PhoneNumber" formControlName="PhoneNumber">
                 <div *ngIf="contactForm.get('PhoneNumber')?.hasError('pattern') && contactForm.get('PhoneNumber')?.touched"
                     class="error-message">
-                    Invalid phone number (10 digits allowed).
+                    Invalid phone number
                 </div>
             </div>
             <div class="contact-item">
@@ -42,7 +42,7 @@
                 <input type="text" name="Cell" formControlName="Cell">
                 <div *ngIf="contactForm.get('Cell')?.hasError('pattern') && contactForm.get('Cell')?.touched"
                     class="error-message">
-                    Invalid cell number (10 digits allowed).
+                    Invalid cell number
                 </div>
             </div>
             <div class="contact-item">
