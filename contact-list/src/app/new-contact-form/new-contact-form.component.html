@@ -1,43 +1,58 @@
-<div *ngIf="contact" class="contact-details">
-    <div class="action-icons">
-        <button (click)="goBack()" class="back-button">
-            <i class="fas fa-arrow-left"></i>
-        </button>
-    </div>
-    <div class="contact-header">
-        <div class="contact-image-container">
-            <img src="assets/profile.png" alt="{{ contact.Name }} Image" class="contact-image">
+<form [formGroup]="contactForm">
+    <div *ngIf="contact" class="contact-details">
+        <div class="action-icons">
+            <button (click)="goBack()" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+            </button>
         </div>
-        <div class="contact-name">{{ contact.Name }}</div>
-    </div>
-    <div class="contact-info">
-        <div class="contact-item">
-            <i class="fa fa-user"></i> Name:
-            <input type="text" name="Name" [(ngModel)]="contact.Name" required>
+        <div class="contact-header">
+            <div class="contact-image-container">
+                <img src="assets/profile.png" alt="{{ contact.Name }} Image" class="contact-image">
+            </div>
+            <div class="contact-name">{{ contact.Name }}</div>
         </div>
-        <div class="contact-item">
-            <i class="fas fa-map-marker-alt"></i> Address:
-            <input type="text" name="Address" [(ngModel)]="contact.Address" required>
-        </div>
-        <div class="contact-item">
-            <i class="far fa-envelope"></i> Email:
-            <input type="text" name="Email" [(ngModel)]="contact.Email" required>
-        </div>
-        <div class="contact-item">
-            <i class="fas fa-phone"></i> Phone:
-            <input type="text" name="PhoneNumber" [(ngModel)]="contact.PhoneNumber" required>
-        </div>
-        <div class="contact-item">
-            <i class="fas fa-mobile-alt"></i> Cell:
-            <input type="text" name="Cell" [(ngModel)]="contact.Cell" required>
-        </div>
-        <div class="contact-item">
-            <i class="fas fa-birthday-cake"></i> Birthday:
-            <input type="date" name="Birthday" [(ngModel)]="contact.Birthday" required>
-        </div>
-    </div>
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fa fa-user"></i> Name:
+                <input type="text" name="Name" formControlName="Name" required>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i> Address:
+                <input type="text" name="Address" formControlName="Address" required>
+            </div>
+            <div class="contact-item">
+                <i class="far fa-envelope"></i> Email:
+                <input type="text" name="Email" formControlName="Email" required>
+                <div *ngIf="contactForm?.get('Email')?.hasError('email') && contactForm?.get('Email')?.touched"
+                    class="error-message">
+                    Invalid email address.
+                </div>
 
-    <div class="contact-actions-save">
-        <button (click)="saveContact()">Save</button>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-phone"></i> Phone:
+                <input type="text" name="PhoneNumber" formControlName="PhoneNumber">
+                <div *ngIf="contactForm.get('PhoneNumber')?.hasError('pattern') && contactForm.get('PhoneNumber')?.touched"
+                    class="error-message">
+                    Invalid phone number (10 digits allowed).
+                </div>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-mobile-alt"></i> Cell:
+                <input type="text" name="Cell" formControlName="Cell">
+                <div *ngIf="contactForm.get('Cell')?.hasError('pattern') && contactForm.get('Cell')?.touched"
+                    class="error-message">
+                    Invalid cell number (10 digits allowed).
+                </div>
+            </div>
+            <div class="contact-item">
+                <i class="fas fa-birthday-cake"></i> Birthday:
+                <input type="date" name="Birthday" formControlName="Birthday" required>
+            </div>
+        </div>
+
+        <div class="contact-actions-save">
+            <button (click)="saveContact()" [disabled]="!contactForm.valid">Save</button>
+        </div>
     </div>
-</div>
+</form>

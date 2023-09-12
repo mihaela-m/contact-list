@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ContactService } from '../shared/services/contact.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { ContactService } from '../shared/services/contact.service';
 })
 export class ContactDetailsComponent implements OnInit {
   contact: any
+  contactForm: FormGroup
   isNewContact = false;
   editMode = false;
   deleteConfirmed = false;
@@ -16,7 +18,20 @@ export class ContactDetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private router: Router,
-    private contactService: ContactService) { }
+    private contactService: ContactService,
+    private fb: FormBuilder
+  ) {
+    this.contactForm = this.fb.group({
+      Address: ['', Validators.required],
+      Email: ['', [Validators.required, Validators.email]],
+      PhoneNumber: ['', Validators.pattern(/^\(\d{3}\) \d{3}-\d{4}$/)],
+      Cell: ['', Validators.pattern(/^\(\d{3}\) \d{3}-\d{4}$/)],
+      RegistrationDate: ['', Validators.required],
+      Age: ['', Validators.required],
+    });
+
+    this.disableFormControls();
+  }
 
   ngOnInit(): void {
     const contactId = this.route.snapshot.paramMap.get('id');
@@ -25,6 +40,14 @@ export class ContactDetailsComponent implements OnInit {
         if (contact) {
           this.contact = contact;
           this.calculateAge(contact.Birthday);
+          this.contactForm.patchValue({
+            Address: contact.Address,
+            Email: contact.Email,
+            PhoneNumber: contact.PhoneNumber,
+            Cell: contact.Cell,
+            RegistrationDate: contact.RegistrationDate,
+            Age: contact.Age,
+          });
         } else {
           console.error('Contact not found.');
         }
@@ -34,10 +57,22 @@ export class ContactDetailsComponent implements OnInit {
     }
   }
 
+
   saveContact() {
-    if (this.contact && this.contact.id) {
-      this.contactService.editContact(this.contact.id - 1, this.contact);
-      this.toggleEditMode();
+    if (this.contactForm.valid) {
+      const formData = this.contactForm.value;
+
+      if (this.contact && this.contact.id) {
+        this.contact.Address = formData.Address;
+        this.contact.Email = formData.Email;
+        this.contact.PhoneNumber = formData.PhoneNumber;
+        this.contact.Cell = formData.Cell;
+        this.contact.RegistrationDate = formData.RegistrationDate;
+        this.contact.Age = formData.Age;
+
+        this.contactService.editContact(this.contact.id, this.contact);
+        this.toggleEditMode();
+      }
     }
   }
 
@@ -61,13 +96,21 @@ export class ContactDetailsComponent implements OnInit {
       this.contact.Age = age;
     }
   }
-  
-  goBack(){
+
+  goBack() {
     this.router.navigate(['/']);
   }
 
   toggleEditMode() {
     this.editMode = !this.editMode;
+
+    if (this.editMode) {
+      // Enable form controls when in edit mode
+      this.enableFormControls();
+    } else {
+      // Disable form controls when not in edit mode
+      this.disableFormControls();
+    }
   }
 
   onDeleteClick() {
@@ -79,6 +122,24 @@ export class ContactDetailsComponent implements OnInit {
     if (confirmed) {
       this.deleteContact();
     }
+  }
+
+  private enableFormControls() {
+    Object.keys(this.contactForm.controls).forEach((key) => {
+      const control = this.contactForm.get(key);
+      if (control) {
+        control.enable();
+      }
+    });
+  }
+
+  private disableFormControls() {
+    Object.keys(this.contactForm.controls).forEach((key) => {
+      const control = this.contactForm.get(key);
+      if (control) {
+        control.disable();
+      }
+    });
   }
 
 
